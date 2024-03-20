@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 // Controller 레이어 : 
 // - 클라이언트와 서버간의 접점
@@ -20,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 // @RestController = @Controller + @ResponseBody
 @RestController
 // @RequestMapping() : HTTP 요청에 클래스와 메서드를 매핑하기 위한 어노테이션
-// @RequestMapping(value="/main", method={RequestMethod.GET})
 // HTTP GET localhost:4000/main/**
+// @RequestMapping(value="/main", method={RequestMethod.GET})
+
+// HTTP localhost:4000/main/**
 @RequestMapping("/main")
 public class BasicController {
     
