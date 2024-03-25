@@ -3,6 +3,14 @@ package com.jihoon.basic.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.jihoon.basic.service.BasicService;
+import com.jihoon.basic.service.implement.BasicServiceImplement;
+
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -23,12 +31,22 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 // HTTP localhost:4000/main/**
 @RequestMapping("/main")
+@RequiredArgsConstructor
 public class BasicController {
+
+    // private BasicService service;
+
+    // @Autowired
+    // public BasicController(BasicService service) {
+    //     this.service = service;
+    // }
+
+    private final BasicService service;
     
     // HTTP GET localhost:4000/main/
     @RequestMapping(value="/", method={RequestMethod.GET})
     public String getHello() {
-        return "Hello Springboot!!";
+        return service.getHello();
     }
 
     // HTTP GET Method : 클라이언트가 서버로부터 데이터를 받기를 원할 때 사용하는 메서드
@@ -36,7 +54,8 @@ public class BasicController {
     // @GetMapping() : RequestMapping 기능을 GET Mathod에 한정시킨 것 (가독성 + 안정성)
     @GetMapping("/apple")
     public String getApple () {
-        return "Get Mapping 으로 만든 메서드";
+        
+        return service.getApple();
     }
 
     // HTTP POST Method : 클라이언트가 서버에 데이터를 작성하기 원할때 사용하는 메서드
